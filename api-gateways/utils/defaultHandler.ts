@@ -12,4 +12,4 @@ export const getDefaultHandler = (stack: Stack): NodejsFunction => {
     entry: path.join(__dirname, `./unsupported.ts`),
     handler: "handler",
   });
-} 
+}
