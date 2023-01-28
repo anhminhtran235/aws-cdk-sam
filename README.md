@@ -9,8 +9,8 @@
 ## Some useful commands:
 
 - When you first clone this repo I think you need to run `cdk bootstrap`, `cdk synth`, and then `cdk deploy` so your env has all the files
-- Run all endpoints: sam local start-api -t .\cdk.out\AwsCdkSamStack.template.json
-- Run a specific endpoint with custom payload: sam local invoke -t .\cdk.out\AwsCdkSamStack.template.json createUserHandler -e .\events\createUserPayload.json
+- Run all endpoints: `sam local start-api -t .\cdk.out\AwsCdkSamStack.template.json`
+- Run a specific endpoint with custom payload: `sam local invoke -t .\cdk.out\AwsCdkSamStack.template.json createUserHandler -e .\events\createUserPayload.json`
 
 Run CDK locally docs: https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-cdk-testing.html
 
@@ -22,3 +22,4 @@ Run CDK locally docs: https://docs.aws.amazon.com/serverless-application-model/l
 ## Some notes:
 
 - I haven't figured out debugging. I added `launch.json`, and was able to hit a breakpoint. However the breakpoint wasn't the one I set, but was in some weird file. Here's some resources that might be helpful: https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-using-debugging.html and https://youtu.be/FMsNsSHhRC8?t=272
+- Deploying this is pretty easy. Iirc you just need to run cdk deploy and everything will be deployed for you. You can go to your lambdas on AWS to check that new lambda is added. Note I haven't been able to invoke lambda through API Gateway yet. I'm having 403 forbidden error. Probably just need to set up the authorization right
