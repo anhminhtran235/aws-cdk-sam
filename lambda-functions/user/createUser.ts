@@ -4,24 +4,37 @@ import { User } from '../../database/entities/User';
 
 export const handler: APIGatewayProxyHandler = async (event: any, context: Context) => {
     try {
-      await connectToDb();
+      // console.log(event.body);
+      // console.log(context);
       
-      const {name, email, cardNumber, balance} = event;
+      // await connectToDb();
+      
+      // const {name, email, cardNumber, balance} = event;
 
-      const emailExists = await User.findOneBy({email});
-      if (emailExists) {
-        return {
-          statusCode: 400,
-          body: JSON.stringify({message: `Email ${email} already exists`})
-        }  
-      }
+      // const emailExists = await User.findOneBy({email});
+      // if (emailExists) {
+      //   return {
+      //     statusCode: 400,
+      //     body: JSON.stringify({message: `Email ${email} already exists`})
+      //   }  
+      // }
 
-      const user = User.create({name, email, cardNumber, balance});
-      await user.save();
+      // const user = User.create({name, email, cardNumber, balance});
+      // await user.save();
   
+      await connectToDb();
+      const user = User.create({
+        name: 'ldfskjsdfl113131313',
+        email: 'dfsl@gmail.com',
+        cardNumber: '1234567891',
+        balance: 123
+      })
+
+      await user.save();
+
       return {
         statusCode: 200,
-        body: JSON.stringify(user)
+        body: JSON.stringify({message: 'success'})
       }  
     } catch (error) {
       console.error(error);

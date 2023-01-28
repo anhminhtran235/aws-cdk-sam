@@ -2,6 +2,7 @@ import { LambdaIntegration, LambdaRestApi } from "aws-cdk-lib/aws-apigateway";
 import {Runtime} from "aws-cdk-lib/aws-lambda";
 import {NodejsFunction} from "aws-cdk-lib/aws-lambda-nodejs";
 import { Stack } from 'aws-cdk-lib'
+import cdk = require('aws-cdk-lib');
 import * as path from 'path';
 
 export const addUserGateways = (rootGateway: LambdaRestApi, stack: Stack) => {
@@ -20,6 +21,7 @@ const constructCreateUserHandler = (stack: Stack): LambdaIntegration => {
     runtime: Runtime.NODEJS_18_X,
     entry: path.join(__dirname, `../lambda-functions/user/createUser.ts`),
     handler: "handler",
+    timeout: cdk.Duration.seconds(20)
   });
 
   return new LambdaIntegration(createUserHandler);
