@@ -1,5 +1,7 @@
 # AWS CDK + SAM prototype
 
+Feel free to copy the entire repo if it's helpful lol
+
 ## Prerequisite
 
 - nodejs 18
